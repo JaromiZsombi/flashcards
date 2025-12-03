@@ -4,7 +4,7 @@ import { Home } from './pages/Home'
 import { Topic } from './pages/Topic'
 import { AddCard } from './pages/AddCard'
 import { AddTopic } from './pages/AddTopic'
-
+import '@fontsource/inter';
 function App() {
 
   return (

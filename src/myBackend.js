@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import { db } from "./firebaseApp"
 
 export const addTopic = async (topicName) => {
@@ -39,5 +39,12 @@ export const readCardsOnce = async(topicId, setCards)=>{
     } catch (error) {
         console.log("Egyszeri kártya lekérési hiba: ", error)
         return [];  
+    }
+}
+
+export const deleteRecipe = async (id) => {
+    if(window.confirm("Biztosan szeretnéd törölni a receptet?")){
+    const docRef = doc(db, "topics", id)
+    await deleteDoc(docRef)
     }
 }

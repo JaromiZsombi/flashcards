@@ -1,0 +1,27 @@
+:root {
+    --carbon-black: #1c1d21ff;
+    --dusty-mauve: #a288a6ff;
+    --lilac-ash: #bb9bb0ff;
+    --silver: #ccbcbcff;
+    --lavender-blush: #f1e3e4ff;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.cardokBase {
+    display: flex;
+    justify-content: center;
+}
+.topics{
+    background-color: var(--accent);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 540px;
+}
+
+.cardokFooter{
+    
+}
