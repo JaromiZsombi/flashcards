@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query } from "firebase/firestore"
 import { db } from "./firebaseApp"
 
 export const addTopic = async (topicName) => {
@@ -18,6 +18,16 @@ export const addCard = async (topicId, card)=>{
     } catch (error) {
         console.log("Nem sikerült hozzáadni a kártyát! " + error)
     }
+}
+
+export const readTopics = async (setTopics, setLoading) => {
+    const collectionref = collection(db, "topics")
+    const q = query(collectionref, orderBy("topicName"))
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+        setTopics(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+        setLoading(false)
+    })
+    return unsubscribe
 }
 
 export const readTopicsOnce = async (setTopics) =>{

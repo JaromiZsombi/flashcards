@@ -5,6 +5,7 @@ import { Topic } from './pages/Topic'
 import { AddCard } from './pages/AddCard'
 import { AddTopic } from './pages/AddTopic'
 import '@fontsource/inter';
+import { FlashCards } from './pages/FlashCards'
 function App() {
 
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/topic" element={<Topic />} />
         <Route path="/addtopic" element={<AddTopic />} />
-        <Route path="/addcard" element={<AddCard />} />
+        <Route path="/addcard/:id" element={<AddCard />} />
+        <Route path="/cards/:id" element={<FlashCards />} />
       </Routes>
     </div>
   )

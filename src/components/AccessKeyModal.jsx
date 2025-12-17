@@ -12,18 +12,26 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { MyAuthContext } from '../context/AuthContext';
 
-export const AccessKeymodal=({open, onClose, onSuccess})=>  {
-    const [key, setKey] = useState("")
-    const {verifyKey}=useContext(MyAuthContext)
+export const AccessKeymodal = ({ open, onClose, onSuccess }) => {
+    const [key, setKey] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false); // ÚJ
+    const { verifyKey } = useContext(MyAuthContext);
 
-    const handleSubmit= async(event)=>{
-        event.preventDefault()
-        const result = await verifyKey(key)//true vagy fals
-        if(result){
-            onClose()
-            onSuccess()
-        }else{
-            alert("Hibás kód!")
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setIsSubmitting(true); // Gomb letiltása indításkor
+        
+        try {
+            const result = await verifyKey(key);
+            if (result) {
+                setKey(""); // Mező ürítése
+                onClose();
+                onSuccess();
+            } else {
+                alert("Hibás kód vagy szerver hiba!");
+            }
+        } finally {
+            setIsSubmitting(false); // Gomb visszakapcsolása
         }
     }
   
@@ -39,7 +47,9 @@ export const AccessKeymodal=({open, onClose, onSuccess})=>  {
                 <FormLabel>Kults</FormLabel>
                 <Input autoFocus required type="password" value={key} onChange={(e)=>setKey(e.target.value)}/>
               </FormControl>
-              <Button type="submit">Submit</Button>
+              <Button type="submit" loading={isSubmitting}>
+            {isSubmitting ? "Ellenőrzés..." : "Submit"}
+        </Button>
             </Stack>
           </form>
         </ModalDialog>

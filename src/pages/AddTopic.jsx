@@ -38,7 +38,7 @@ export const AddTopic = () => {
         <button onClick={() => navigate("/")}></button>
         <h1>Új téma hozzáadása</h1>
         <form className='newTopicForm' onSubmit={handleSubmit}>
-            <input type="text" onChange={(e) => setName(e.target.value)} required/>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
         </form>
     </div>
   )

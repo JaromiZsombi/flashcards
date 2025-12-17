@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router'
 import { TopicCard } from '../components/TopicCard'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { readTopicsOnce } from '../myBackend'
+import { readTopics, readTopicsOnce } from '../myBackend'
 import { Button, useColorScheme } from '@mui/joy'
 import { AccessKeymodal } from '../components/AccessKeyModal'
 import { useContext } from 'react'
 import { MyAuthContext } from '../context/AuthContext'
+
 
 export const Home = () => {
 
@@ -17,8 +18,8 @@ export const Home = () => {
     const [loading, setLoading] = useState(false)
     const {hasAccess, clearKey} = useContext(MyAuthContext)
 
-    useEffect(() => {
-    readTopicsOnce(setTopicCards, setLoading)
+  useEffect(() => {
+    readTopics(setTopicCards, setLoading)
   }, [])
 
   const handleAddTopic=()=>{
@@ -36,7 +37,6 @@ export const Home = () => {
 
   return (
     <div className='homeBase'>
-      <button onClick={() => navigate("/addcard")}>Új kártya</button>
       <button onClick={() => navigate("/addtopic")}>Add Topic</button>
 
       <div className="cardokBase"> 
