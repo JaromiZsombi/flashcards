@@ -11,6 +11,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 export const AuthProvider = ({ children }) => {
 
     const [hasAccess, setHasAccess] = useState(false)
+    const [currentTopic, setCurrentTopic] = useState("")
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -65,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <MyAuthContext.Provider value={{ hasAccess, verifyKey, clearKey }}>
+        <MyAuthContext.Provider value={{ hasAccess, verifyKey, clearKey ,currentTopic, setCurrentTopic}}>
             {children}
         </MyAuthContext.Provider>
     )

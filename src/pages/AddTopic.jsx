@@ -31,7 +31,6 @@ export const AddTopic = () => {
     setName("")
     navigate("/")
   }
-  console.log(name)
 
   return (
     <div className='addTopicDiv' style={{height:"100vh", display:"flex",  justifyContent:"center"}}>

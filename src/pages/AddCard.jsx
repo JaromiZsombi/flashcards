@@ -4,13 +4,15 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { addCard, readCardsOnce } from '../myBackend'
 import { Button } from '@mui/joy'
+import { MyAuthContext } from '../context/AuthContext'
+import { useContext } from 'react'
 
 export const AddCard = () => {
 
 
   const navigate = useNavigate()
 
-
+  const {currentTopic} = useContext(MyAuthContext)
   const [question, setQuestion] = useState("")
   const [answer, setAnswer] = useState("")
   const [loading, setLoading] = useState(false)
@@ -21,6 +23,7 @@ export const AddCard = () => {
     if(id)
       readCardsOnce(id, setAnswer)
   },[id]) */
+  console.log(currentTopic)
 
   const handleSubmit = async (e) => {
       e.preventDefault()
@@ -33,8 +36,9 @@ export const AddCard = () => {
     }
 
   return (
-    <div style={{height:"100vh", display:"flex", justifyContent:"center"}} className='addCardBase'>
+    <div style={{height:"100vh", display:"flex", alignItems:"center", flexDirection:"column"}} className='addCardBase'>
         <Button style={{position:"absolute", top:"0", left:"0" }} onClick={() => navigate("/cards/"+id)}>Vissza a kártyákra</Button>
+        <p style={{color:"White", fontSize:"60px", marginBottom:"30px", marginTop:"60px"}}>{currentTopic}</p>
         <div className='addCardMain'>
           <h1>Új kártya hozzáadása</h1>
         <form onSubmit={handleSubmit} className='newTopicForm'>

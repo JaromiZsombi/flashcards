@@ -18,6 +18,7 @@ export const FlashCards = ({ answer, question }) => {
     const [cards, setCards] = useState([])
     const [open, setOpen] = React.useState(false)
     const [currentIndex, setCurrentIndex] = useState(0)
+    const {currentTopic} = useContext(MyAuthContext)
     const { id } = useParams()
     const {hasAccess} = useContext(MyAuthContext)
     const [flipped, setFlipped] = useState(false)
@@ -62,7 +63,10 @@ export const FlashCards = ({ answer, question }) => {
         <div className='mainDivFlashCard'>
             {hasAccess&& hasAccess? <Button onClick={() => navigate("/addcard/" + id)}>Adj kártyát</Button>: <Button onClick={handleLogin}>Adj kártyát</Button>}
             {hasAccess&& hasAccess? <Button onClick={handleDeleteCard}>Kártya törlése</Button>: <Button onClick={handleLogin}>Kártya törlése</Button>}
+           
+            
             <div className='flipCardContainerDiv'>
+                <p style={{color:"White", fontSize:"60px", marginBottom:"30px"}}>{currentTopic}</p>
             {cards[currentIndex]&& cards[currentIndex]? <div><ReactFlipCard flipCardCss='flipCard' containerCss='flipContainer' frontCss='FCFront' backCss='FCBack'
                 //frontStyle={""}
                 //backStyle={""}
@@ -84,7 +88,7 @@ export const FlashCards = ({ answer, question }) => {
 
 
             
-<AccessKeymodal open={open} onClose={()=>setOpen(false)} onSuccess={()=>navigate("/cards/:id")}/>
+<AccessKeymodal open={open} onClose={()=>setOpen(false)} onSuccess={()=>navigate("/cards/"+id)}/>
     
         </div>
     )
