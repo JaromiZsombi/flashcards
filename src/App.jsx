@@ -6,10 +6,12 @@ import { AddCard } from './pages/AddCard'
 import { AddTopic } from './pages/AddTopic'
 import '@fontsource/inter';
 import { FlashCards } from './pages/FlashCards'
+import { HomeButton } from './components/HomeButton'
 function App() {
 
   return (
     <div>
+      <HomeButton/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/topic" element={<Topic />} />

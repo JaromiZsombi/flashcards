@@ -22,7 +22,7 @@ export const Home = () => {
     readTopics(setTopicCards, setLoading)
   }, [])
 
-  const handleAddTopic=()=>{
+  const handleLogin=()=>{
     if(hasAccess){
       navigate('/')
     } 
@@ -37,7 +37,7 @@ export const Home = () => {
 
   return (
     <div className='homeBase'>
-      <button onClick={() => navigate("/addtopic")}>Add Topic</button>
+      {hasAccess&& hasAccess? <Button onClick={() => navigate("/addtopic")}>Add Topic</Button>: <Button onClick={handleLogin}>Add Topic</Button>}
 
       <div className="cardokBase"> 
         {loading && <p>loading...</p>}
@@ -46,7 +46,7 @@ export const Home = () => {
       </div>
     
       <div className='cardokFooter'>
-        {hasAccess? <Button style={{ position: "fixed", bottom: "5px", right: "5px", }} onClick={handleLogout}> Kilépés admin módból</Button> : <Button style={{ position: "fixed", bottom: "5px", right: "5px", }}   onClick={handleAddTopic} >Belépés</Button>}
+        {hasAccess? <Button style={{ position: "fixed", bottom: "5px", right: "5px", backgroundColor:"red"}} onClick={handleLogout}> Kilépés admin módból</Button> : <Button style={{ position: "fixed", bottom: "5px", right: "5px", }}   onClick={handleLogin} >Belépés</Button>}
         
       </div>
        

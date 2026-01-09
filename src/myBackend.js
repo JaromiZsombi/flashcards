@@ -52,9 +52,16 @@ export const readCardsOnce = async(topicId, setCards)=>{
     }
 }
 
-export const deleteRecipe = async (id) => {
-    if(window.confirm("Biztosan szeretnéd törölni a receptet?")){
-    const docRef = doc(db, "topics", id)
-    await deleteDoc(docRef)
+export const deleteRecipe = async (topicId) => {
+    if(window.confirm("Biztosan szeretnéd törölni a témát?")){
+        const docRef = doc(db, "topics", topicId)
+        await deleteDoc(docRef)
+    }
+}
+
+export const deleteCard = async(topicId, cardId)=>{
+    if(window.confirm("Biztosan szeretnéd törölni a kártyát?")){
+        const docRef = doc(db, "topics", topicId, "cards", cardId)
+        await deleteDoc(docRef)
     }
 }

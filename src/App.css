@@ -1,7 +1,7 @@
 :root {
     --carbon-black: #1c1d21ff;
-    --dusty-mauve: #a288a6ff;
-    --lilac-ash: #bb9bb0ff;
+    --dusty-mauve: rgb(162, 136, 166);
+    --lilac-ash: rgb(187, 155, 176);
     --silver: #ccbcbcff;
     --lavender-blush: #f1e3e4ff;
 }
@@ -11,17 +11,141 @@
     margin: 0;
 }
 
+
+
 .cardokBase {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .topics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
     background-color: var(--accent);
+    border: black 1px solid;
+    margin: 10px;
     border-radius: 20px;
     padding: 20px;
-    max-width: 540px;
+    max-width: 500px;
+    width: 500px;
+    height: 100px;
+    background-color: var(--lavender-blush);
+}
+.topicsText{
+    font-size: 3rem;
+}
+.deleteTopicBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: red;
+
 }
 
+
+.FCFront{
+    background-color: var(--lilac-ash);
+    color: beige;
+    box-shadow: rgba(187, 155, 176, 0.30) 8.95px 8.95px 8.6px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    border-radius: 50px;
+}
+
+.FCBack{
+    background-color: rgb(162, 136, 166);
+    color: beige;
+    box-shadow: rgb(162, 136, 166, 0.3) 8.95px 8.95px 8.6px;
+    display: flex;
+    font-size: 3rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    border-radius: 50px;
+}
+.flipContainer{
+    width: 300px;
+    height: 400px;
+}
+
+.flipCardContainerDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.buttonDiv{
+    margin-top: 10px;
+}
+
+.button1{
+    font-size: 5rem;
+    color: rgb(162, 136, 166);
+    width: 150px;
+    margin: 1px;
+}
+
+.addTopicMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--accent);
+    border: black 1px solid;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 500px;
+    width: 500px;
+    height: 100px;
+    background-color: var(--lavender-blush);
+}
+.addTopicDiv{
+    background-color: var(--silver);
+}
+.addCardMain{
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--accent);
+    border: black 1px solid;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 500px;
+    width: 500px;
+    height: 100px;
+    background-color: var(--lavender-blush);
+    margin-top: 100px;
+}
+
+.homeBase{
+    background-color: var(--silver);
+    height: 100vh;
+}
 .cardokFooter{
+    background-color: red;
+}
+.mainDivFlashCard{
+    background-color: var(--silver);
+    height: 100vh;
+}
+.addCardBase{
+    background-color: var(--silver);
     
 }

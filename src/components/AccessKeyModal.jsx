@@ -39,12 +39,12 @@ export const AccessKeymodal = ({ open, onClose, onSuccess }) => {
     <React.Fragment>
       <Modal open={open} onClose={onClose}>
         <ModalDialog>
-          <DialogTitle>Titkos mikkentyű :+3333333333</DialogTitle>
-          <DialogContent>Add meg a kulcsod a művelet folytatásához :+33333333333</DialogContent>
+          <DialogTitle>Admin felület</DialogTitle>
+          <DialogContent>Add meg a jelszót, hogy használhasd ezt a funkciót</DialogContent>
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
               <FormControl>
-                <FormLabel>Kults</FormLabel>
+                <FormLabel>Kulcs</FormLabel>
                 <Input autoFocus required type="password" value={key} onChange={(e)=>setKey(e.target.value)}/>
               </FormControl>
               <Button type="submit" loading={isSubmitting}>

@@ -12,7 +12,6 @@ export const AddTopic = () => {
     const navigate = useNavigate()
 
     const [name, setName] = useState()
-    const [topic, setTopic] = useState(null)
     const [loading, setLoading] = useState(false)
 
 
@@ -29,17 +28,22 @@ export const AddTopic = () => {
     console.log(name)
     await addTopic(name)
     setLoading(false)
-    
+    setName("")
+    navigate("/")
   }
   console.log(name)
 
   return (
-    <div className='addTopicMain'>
-        <button onClick={() => navigate("/")}></button>
+    <div className='addTopicDiv' style={{height:"100vh", display:"flex",  justifyContent:"center"}}>
+      <Button style={{position:"absolute", top:"0", left:"0" }} onClick={() => navigate("/")}>Vissza a témákra</Button>
+      <div className='addTopicMain' style={{marginTop:"100px"}}>
         <h1>Új téma hozzáadása</h1>
         <form className='newTopicForm' onSubmit={handleSubmit}>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
+            <input style={{height:"2rem", width:"15rem"}} placeholder='Téma' type="text" value={name} onChange={(e) => setName(e.target.value)} required/>
         </form>
+      </div>
+        
+        
     </div>
   )
 }
